@@ -1,33 +1,33 @@
 import axios from 'axios';
-const url = "/api/post";
+const url = "/api/product";
 
 export default class API {
-    // to get all the posts from the server
-    static async getAllPost() {
+    // to get all the products from the server
+    static async getAllProduct() {
         const res = await axios.get(url);
         return res.data;
     }
 
-    // to get single post by id
-    static async getPostByID(id) {
+    // to get single product by id
+    static async getProductByID(id) {
         const res = await axios.get(`${url}/${id}`);
         return res.data;
     }
 
-    // to insert post into database
-    static async addPost(post) {
-        const res = await axios.post(url, post);
+    // to insert product into database
+    static async addProduct(product) {
+        const res = await axios.post(url, product);
         return res.data;
     }
 
-    // to update post into database
-    static async updatePost(id, post) {
-        const res = await axios.patch(`${url}/${id}`, post);
+    // to update product into database
+    static async updateProduct(id, product) {
+        const res = await axios.patch(`${url}/${id}`, product);
         return res.data;
     }
 
-    // to delete a post
-    static async deletePost(id) {
+    // to delete a product
+    static async deleteProduct(id) {
         const res = await axios.delete(`${url}/${id}`);
         return res.data;
     }

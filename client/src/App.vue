@@ -1,7 +1,9 @@
 <template>
   <v-app id="inspire">
     <v-app-bar app>
-      <v-toolbar-title>Démonstration avec Heroku</v-toolbar-title>
+      <v-spacer />
+      <v-toolbar-title class="d-flex justify-center">Démonstration avec Heroku</v-toolbar-title>
+      <v-spacer />
     </v-app-bar>
 
     <v-main>
