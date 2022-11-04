@@ -7,6 +7,9 @@
       class="elevation-1"
       @click:row="productClicked"
     />
+    <v-btn class="mt-3" color="primary" @click="addProduct">
+      Ajouter un produit
+    </v-btn>
   </v-container>
 </template>
 
@@ -33,7 +36,13 @@ export default {
       window.location = URL;
       window.location.href = URL;
       window.location.assign(URL);
-    }
+    },
+    addProduct() {
+      const URL = "/addProduct";
+      window.location = URL;
+      window.location.href = URL;
+      window.location.assign(URL);
+    },
   },
 };
 </script>

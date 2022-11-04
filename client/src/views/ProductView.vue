@@ -1,11 +1,11 @@
 <template>
   <v-container>
+    <v-btn class="mb-3" outlined @click="$router.go(-1)"> Retour </v-btn>
+
     <v-card>
       <v-card-text>
         <p class="d-flex align-center">
-          <v-icon class="me-1">
-            mdi-code-braces-box
-          </v-icon>
+          <v-icon class="me-1"> mdi-code-braces-box </v-icon>
           {{ product._id }}
         </p>
 
@@ -20,20 +20,8 @@
         <p>{{ product.description }}</p>
       </v-card-text>
       <v-card-actions class="d-flex justify-space-between mx-3">
-        <v-btn
-          text
-          color="primary"
-          @click="modifyProduct"
-        >
-          Modifier
-        </v-btn>
-        <v-btn
-          text
-          color="red"
-          @click="deleteProduct"
-        >
-          Supprimer
-        </v-btn>
+        <v-btn text color="primary" @click="modifyProduct"> Modifier </v-btn>
+        <v-btn text color="red" @click="deleteProduct"> Supprimer </v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
@@ -60,7 +48,7 @@ export default {
     },
     async deleteProduct() {
       await API.deleteProduct(this.$route.params.id);
-      const URL = '/';
+      const URL = "/";
       window.location = URL;
       window.location.href = URL;
       window.location.assign(URL);
