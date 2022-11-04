@@ -5,6 +5,7 @@
     </h1>
       
     <v-data-table
+      id="product-list"
       :headers="headers"
       :items="products"
       :items-per-page="10"

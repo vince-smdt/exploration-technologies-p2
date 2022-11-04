@@ -5,7 +5,7 @@
     <v-card>
       <v-card-text>
         <h1 class="text-center my-5 blue--text text--darken-3">
-          Ajouter un produit
+          {{ title }}
         </h1>
 
         <v-text-field label="Titre" v-model="product.title" />
@@ -40,6 +40,7 @@ export default {
     return {
       product: {},
       method: "",
+      title: "",
     };
   },
   async created() {
@@ -47,8 +48,10 @@ export default {
     if (id) {
       this.product = await API.getProductByID(id);
       this.method = "MODIFY";
+      this.title = "Modifier un produit"
     } else {
       this.method = "ADD";
+      this.title = "Ajouter un produit"
     }
   },
   methods: {
