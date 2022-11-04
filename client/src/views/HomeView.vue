@@ -1,5 +1,9 @@
 <template>
   <v-container>
+    <h1 class="text-center my-5 blue--text text--darken-3">
+      Liste des produits
+    </h1>
+      
     <v-data-table
       :headers="headers"
       :items="products"

@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-btn class="mb-3" outlined @click="$router.go(-1)"> Retour </v-btn>
+    <v-btn class="mb-3" outlined @click="goBack()"> Retour </v-btn>
 
     <v-card>
       <v-card-text>
@@ -16,7 +16,17 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn text color="success" @click="addProduct"> Ajouter </v-btn>
+        <v-btn text color="success" @click="addProduct" v-if="method === 'ADD'">
+          Ajouter
+        </v-btn>
+        <v-btn
+          text
+          color="primary"
+          @click="updateProduct"
+          v-if="method === 'MODIFY'"
+        >
+          Modifier
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
@@ -28,17 +38,30 @@ export default {
   name: "AddProduct",
   data() {
     return {
-      product: {
-        title: "",
-        category: "",
-        description: "",
-      },
+      product: {},
+      method: "",
     };
+  },
+  async created() {
+    const id = this.$route.params.id;
+    if (id) {
+      this.product = await API.getProductByID(id);
+      this.method = "MODIFY";
+    } else {
+      this.method = "ADD";
+    }
   },
   methods: {
     async addProduct() {
       await API.addProduct(this.product);
-      const URL = "/";
+      this.goBack();
+    },
+    async updateProduct() {
+      await API.updateProduct(this.$route.params.id, this.product);
+      this.goBack();
+    },
+    goBack() {
+      const URL = '/';
       window.location = URL;
       window.location.href = URL;
       window.location.assign(URL);

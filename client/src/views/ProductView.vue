@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-btn class="mb-3" outlined @click="$router.go(-1)"> Retour </v-btn>
+    <v-btn class="mb-3" outlined @click="goBack()"> Retour </v-btn>
 
     <v-card>
       <v-card-text>
@@ -48,7 +48,10 @@ export default {
     },
     async deleteProduct() {
       await API.deleteProduct(this.$route.params.id);
-      const URL = "/";
+      this.goBack();
+    },
+    goBack() {
+      const URL = '/';
       window.location = URL;
       window.location.href = URL;
       window.location.assign(URL);
