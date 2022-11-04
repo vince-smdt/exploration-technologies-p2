@@ -5,6 +5,7 @@
       :items="products"
       :items-per-page="10"
       class="elevation-1"
+      @click:row="productClicked"
     />
   </v-container>
 </template>
@@ -27,6 +28,12 @@ export default {
     this.products = await API.getAllProduct();
   },
   methods: {
+    productClicked(item) {
+      const URL = `/product/${item._id}`;
+      window.location = URL;
+      window.location.href = URL;
+      window.location.assign(URL);
+    }
   },
 };
 </script>
